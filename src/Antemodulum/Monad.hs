@@ -8,8 +8,6 @@ import Control.Monad as Export ((<=<), liftM2, MonadPlus(..), guard, msum, mfilt
 import Control.Monad.Base as Export
 import Control.Monad.Cont as Export (ContT(..), mapContT, withContT, Cont, cont, runCont, mapCont, withCont)
 import Control.Monad.Cont.Class as Export
-import Control.Monad.Error as Export (ErrorT(..), mapErrorT)
-import Control.Monad.Error.Class as Export
 import Control.Monad.Fix as Export
 import Control.Monad.IO.Class as Export
 import Control.Monad.Logger as Export

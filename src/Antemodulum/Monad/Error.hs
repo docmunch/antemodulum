@@ -8,15 +8,18 @@ module Antemodulum.Monad.Error (
   mapError,
   prefixError,
   failOnError,
-  TErrorT
+  TErrorT,
+  module Export
 ) where
 
 --------------------------------------------------------------------------------
 
 import Antemodulum.Arrow
 import Antemodulum.ClassyPrelude
-import Antemodulum.Monad
 import Antemodulum.Text.Strict (Text)
+
+import Control.Monad.Error as Export (ErrorT(..), mapErrorT)
+import Control.Monad.Error.Class as Export
 
 --------------------------------------------------------------------------------
 
