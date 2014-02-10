@@ -6,9 +6,9 @@ module Antemodulum.Monad.Error (
   throwUnless,
   throwWhen,
   mapError,
+  TErrorT,
   prefixError,
   failOnError,
-  TErrorT,
   module Export
 ) where
 
@@ -44,17 +44,17 @@ throwWhen err cond = when cond $ throwError err
 mapError :: Monad m => (e -> e') -> ErrorT e m a -> ErrorT e' m a
 mapError f m = ErrorT $ liftM (left f) $ runErrorT m
 
--- | Insert a prefix on the error type of an 'ErrorT'.
-prefixError :: (Monad m, IsString e, Monoid e) => e -> ErrorT e m a -> ErrorT e m a
-prefixError p = mapError (\s -> mconcat [p, ": ", s])
-
--- | Run an 'ErrorT' and 'fail' on error.
-failOnError :: (Monad m, Show e) => ErrorT e m a -> m a
-failOnError m = runErrorT m >>= either (fail . show) return
-
 --------------------------------------------------------------------------------
 
 instance Error Text where
   strMsg = pack
 
 type TErrorT m = ErrorT Text m
+
+-- | Run an 'ErrorT' and 'fail' on error.
+failOnError :: Monad m => TErrorT m a -> m a
+failOnError m = runErrorT m >>= either (fail . unpack) return
+
+-- | Insert a prefix on the error type of an 'ErrorT'.
+prefixError :: (Monad m, Show e) => Text -> ErrorT e m a -> TErrorT m a
+prefixError p = mapError (\s -> mconcat [p, ": ", tshow s])
