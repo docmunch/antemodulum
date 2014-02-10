@@ -83,6 +83,13 @@ do not conflict.
 See [`Antemodulum`](./src/Antemodulum.hs) for details on the module
 organization.
 
+The modules in this package are hierarchical only for categorizing the domain of
+the included exports and code. A submodule is not exported from its parent
+module. One benefit of this is that the modules can themselves be used
+independently in the other modules of this package. A common example of this is
+importing one or more of the `Text` modules into other modules that define
+`Text`-related functionality.
+
 ## Extension
 
 The organization of `antemodulum` into themed modules makes it easy to extend
