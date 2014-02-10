@@ -25,10 +25,11 @@ import Antemodulum.Time as Export
 -- use functions from one of these modules, import the module qualified but use
 -- the type (synonym) exported here.
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
-import Antemodulum.ByteString.Strict as Export (ByteString)
 import Antemodulum.List.NonEmpty as Export (NonEmpty)
 import Antemodulum.Text.Lazy as Export (TextL)
-import Antemodulum.Text.Strict as Export (Text)
+-- These types are exported by 'Antemodulum.ClassyPrelude'.
+--import Antemodulum.ByteString.Strict as Export (ByteString)
+--import Antemodulum.Text.Strict as Export (Text)
 
 -- These modules conflict with each other. If you need to import one of them in
 -- a module, you will be fine. If you need both, import at least one module

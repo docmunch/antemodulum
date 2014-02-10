@@ -16,7 +16,6 @@ module Antemodulum.Monad.Error (
 
 import Antemodulum.Arrow
 import Antemodulum.ClassyPrelude
-import Antemodulum.Text.Strict (Text)
 
 import Control.Monad.Error as Export (ErrorT(..), mapErrorT)
 import Control.Monad.Error.Class as Export
