@@ -1,7 +1,5 @@
 module Antemodulum.FilePath (
   -- *
-  concatFP,
-  emptyFP,
   nullFP,
   stripPrefixFP,
   -- *
@@ -23,19 +21,11 @@ module Antemodulum.FilePath (
 import Antemodulum.ClassyPrelude
 
 import Filesystem as Export hiding (readFile, writeFile)
-import Filesystem.Path.CurrentOS as Export hiding (concat, empty, null, stripPrefix, (</>), (<.>))
+import Filesystem.Path.CurrentOS as Export hiding (concat, empty, fromText, null, stripPrefix, (</>), (<.>))
 
-import qualified Filesystem.Path as Import
+import qualified Filesystem.Path.CurrentOS as Import
 
 --------------------------------------------------------------------------------
-
--- | 'Import.concat'
-concatFP :: [FilePath] -> FilePath
-concatFP = Import.concat
-
--- | 'Import.empty'
-emptyFP :: FilePath
-emptyFP = Import.empty
 
 -- | 'Import.null'
 nullFP :: FilePath -> Bool
@@ -55,7 +45,7 @@ instance HasFilePath FilePath where
 instance HasFilePath String where
   toFilePath = fromString
 instance HasFilePath Text where
-  toFilePath = fromText
+  toFilePath = Import.fromText
 
 --------------------------------------------------------------------------------
 
@@ -100,5 +90,5 @@ rewriteBase rew f = case splitExtensions (filename f) of
   (base, exts) -> directory f </> addExtensions (rewrite base) exts
   where
     rewrite :: FilePath -> FilePath
-    rewrite = fromText . rew . fromFilePath
+    rewrite = toFilePath . rew . fromFilePath
 
