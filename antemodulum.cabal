@@ -62,22 +62,23 @@ library
                         Antemodulum.Time
 
   build-depends:
-                        base == 4.6.*,
-                        bytestring == 0.10.*,
-                        classy-prelude == 0.7.*,
-                        -- The Default class was split off in 0.5.2.
-                        data-default >= 0.5.2 && < 0.6,
-                        directory == 1.2.*,
-                        lifted-async == 0.1.*,
-                        monad-control == 0.3.*,
-                        monad-logger == 0.3.*,
-                        mtl == 2.1.*,
+                        base,
+                        bytestring,
+                        classy-prelude >= 0.7,
+                        -- The Default class was split off in 0.5.2. Depending
+                        -- on an older version can cause problems.
+                        data-default >= 0.5.2,
+                        directory,
+                        lifted-async,
+                        monad-control,
+                        monad-logger,
+                        mtl,
                         process,
-                        semigroups == 0.12.*,
-                        setenv == 0.1.*,
-                        system-fileio == 0.3.*,
-                        system-filepath == 0.4.*,
-                        text == 1.1.*,
-                        time == 1.4.*,
-                        transformers == 0.3.*,
-                        transformers-base == 0.4.*
+                        semigroups,
+                        setenv,
+                        system-fileio,
+                        system-filepath,
+                        text,
+                        time,
+                        transformers,
+                        transformers-base
