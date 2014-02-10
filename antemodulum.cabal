@@ -49,6 +49,7 @@ library
                         Antemodulum.Default
                         Antemodulum.FilePath
                         Antemodulum.Functor
+                        Antemodulum.List.NonEmpty
                         Antemodulum.Text.Lazy
                         Antemodulum.Text.Strict
                         Antemodulum.Maybe
@@ -72,6 +73,7 @@ library
                         monad-logger == 0.3.*,
                         mtl == 2.1.*,
                         process,
+                        semigroups == 0.12.*,
                         setenv == 0.1.*,
                         system-fileio == 0.3.*,
                         system-filepath == 0.4.*,

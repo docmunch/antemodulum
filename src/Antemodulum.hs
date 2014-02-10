@@ -26,6 +26,7 @@ import Antemodulum.Time as Export
 -- the type (synonym) exported here.
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
 import Antemodulum.ByteString.Strict as Export (ByteString)
+import Antemodulum.List.NonEmpty as Export (NonEmpty)
 import Antemodulum.Text.Lazy as Export (TextL)
 import Antemodulum.Text.Strict as Export (Text)
 
