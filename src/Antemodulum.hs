@@ -35,5 +35,5 @@ import Antemodulum.Text.Strict as Export (Text)
 --
 -- When modifying one of the following modules, uncomment it here to verify that
 -- it does not conflict with 'Antemodulum'.
---import Antemodulum.Monad.Lazy as Export import
+--import Antemodulum.Monad.Lazy as Export
 --import Antemodulum.Monad.Strict as Export
