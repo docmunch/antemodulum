@@ -74,6 +74,7 @@ library
                         monad-logger,
                         mtl,
                         process,
+                        resourcet,
                         semigroups,
                         setenv,
                         system-fileio,
