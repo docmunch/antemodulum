@@ -43,7 +43,7 @@ class HasFilePath a where
 instance HasFilePath FilePath where
   toFilePath = id
 instance HasFilePath String where
-  toFilePath = fromString
+  toFilePath = decodeString
 instance HasFilePath Text where
   toFilePath = Import.fromText
 
