@@ -3,6 +3,30 @@ module Antemodulum.FilePath (
   nullFP,
   stripPrefixFP,
   -- *
+  isFile,
+  getModified,
+  getSize,
+  copyFile,
+  copyFileContent,
+  copyPermissions,
+  removeFile,
+  openFile,
+  withFile,
+  appendFile,
+  openTextFile,
+  withTextFile,
+  readTextFile,
+  writeTextFile,
+  appendTextFile,
+  isDirectory,
+  canonicalizePath,
+  listDirectory,
+  createDirectory,
+  createTree,
+  removeDirectory,
+  removeTree,
+  getWorkingDirectory,
+  -- *
   HasFilePath(..),
   IsFilePath(..),
   (</>),
@@ -19,10 +43,12 @@ module Antemodulum.FilePath (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude
+import Antemodulum.Monad.IO
 
-import Filesystem as Export hiding (readFile, writeFile)
+import Filesystem as Export (IOMode)
 import Filesystem.Path.CurrentOS as Export hiding (concat, decode, empty, encode, fromText, null, stripPrefix, (</>), (<.>))
 
+import qualified Filesystem as Import
 import qualified Filesystem.Path.CurrentOS as Import
 
 --------------------------------------------------------------------------------
@@ -34,6 +60,77 @@ nullFP = Import.null
 -- | 'Import.stripPrefix'
 stripPrefixFP :: FilePath -> FilePath -> Maybe FilePath
 stripPrefixFP = Import.stripPrefix
+
+--------------------------------------------------------------------------------
+
+isFile :: MonadIO m => FilePath -> m Bool
+isFile = liftIO1 Import.isFile
+
+getModified :: MonadIO m => FilePath -> m UTCTime
+getModified = liftIO1 Import.getModified
+
+getSize :: MonadIO m => FilePath -> m Integer
+getSize = liftIO1 Import.getSize
+
+copyFile :: MonadIO m => FilePath -> FilePath -> m ()
+copyFile = liftIO2 Import.copyFile
+
+copyFileContent :: MonadIO m => FilePath -> FilePath -> m ()
+copyFileContent = liftIO2 Import.copyFileContent
+
+copyPermissions :: MonadIO m => FilePath -> FilePath -> m ()
+copyPermissions = liftIO2 Import.copyPermissions
+
+removeFile :: MonadIO m => FilePath -> m ()
+removeFile = liftIO1 Import.removeFile
+
+openFile :: MonadIO m => FilePath -> IOMode -> m Handle
+openFile = liftIO2 Import.openFile
+
+withFile :: MonadIO m => FilePath -> IOMode -> (Handle -> IO a) -> m a
+withFile = liftIO3 Import.withFile
+
+appendFile :: MonadIO m => FilePath -> ByteString -> m ()
+appendFile = liftIO2 Import.appendFile
+
+openTextFile :: MonadIO m => FilePath -> IOMode -> m Handle
+openTextFile = liftIO2 Import.openTextFile
+
+withTextFile :: MonadIO m => FilePath -> IOMode -> (Handle -> IO a) -> m a
+withTextFile = liftIO3 Import.withTextFile
+
+readTextFile :: MonadIO m => FilePath -> m Text
+readTextFile = liftIO1 Import.readTextFile
+
+writeTextFile :: MonadIO m => FilePath -> Text -> m ()
+writeTextFile = liftIO2 Import.writeTextFile
+
+appendTextFile :: MonadIO m => FilePath -> Text -> m ()
+appendTextFile = liftIO2 Import.appendTextFile
+
+isDirectory :: MonadIO m => FilePath -> m Bool
+isDirectory = liftIO1 Import.isDirectory
+
+canonicalizePath :: MonadIO m => FilePath -> m FilePath
+canonicalizePath = liftIO1 Import.canonicalizePath
+
+listDirectory :: MonadIO m => FilePath -> m [FilePath]
+listDirectory = liftIO1 Import.listDirectory
+
+createDirectory :: MonadIO m => Bool -> FilePath -> m ()
+createDirectory = liftIO2 Import.createDirectory
+
+createTree :: MonadIO m => FilePath -> m ()
+createTree = liftIO1 Import.createTree
+
+removeDirectory :: MonadIO m => FilePath -> m ()
+removeDirectory = liftIO1 Import.removeDirectory
+
+removeTree :: MonadIO m => FilePath -> m ()
+removeTree = liftIO1 Import.removeTree
+
+getWorkingDirectory :: MonadIO m => m FilePath
+getWorkingDirectory = liftIO Import.getWorkingDirectory
 
 --------------------------------------------------------------------------------
 
