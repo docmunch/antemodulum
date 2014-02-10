@@ -17,6 +17,7 @@ import Antemodulum.Functor as Export
 import Antemodulum.Maybe as Export
 import Antemodulum.Monad as Export
 import Antemodulum.Monad.Error as Export
+import Antemodulum.Monad.IO as Export
 import Antemodulum.Numeric as Export
 import Antemodulum.System as Export
 import Antemodulum.Time as Export

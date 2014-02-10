@@ -55,6 +55,7 @@ library
                         Antemodulum.Maybe
                         Antemodulum.Monad
                         Antemodulum.Monad.Error
+                        Antemodulum.Monad.IO
                         Antemodulum.Monad.Lazy
                         Antemodulum.Monad.Strict
                         Antemodulum.Numeric
