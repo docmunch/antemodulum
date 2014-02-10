@@ -26,7 +26,7 @@ import Antemodulum.Time as Export
 -- use functions from one of these modules, import the module qualified but use
 -- the type (synonym) exported here.
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
-import Antemodulum.List.NonEmpty as Export (NonEmpty)
+import Antemodulum.List.NonEmpty as Export (NonEmpty(..))
 import Antemodulum.Text.Lazy as Export (TextL)
 -- These types are exported by 'Antemodulum.ClassyPrelude'.
 --import Antemodulum.ByteString.Strict as Export (ByteString)
