@@ -47,15 +47,17 @@ your `.cabal`. Instead, import `Antemodulum.Text.Strict` which simply re-exports
 Dealing with strings in Haskell can be difficult. This package does not try to
 solve that problem, but it does try to help.
 
-* Use `TextS`, `TextL`, `ByteStringS`, `ByteStringL` in your code to be clear
-  about whether your type is strict or lazy. These type synonyms are exported
-  from `Antemodulum`.
+* Use `Text`, `TextL`, `ByteString`, `ByteStringL` in your code to be clear
+  about whether your type is strict (no suffix) or lazy (an `L` suffix) and to
+  avoid having to use qualified names . These types are exported from
+  `Antemodulum`.
 * Use the `mono-traversable` type classes for many of the functions that are
   common among the string types.
 * If you need to use specialized functions, import one of the included modules
   qualified, e.g. `import qualified Antemodulum.Text.Strict as TS`. Note that
-  you can still use the above unqualified type synonyms (e.g. `TextS` and not
-  `TS.TextS`) after the qualified import.
+  you can still use the above unqualified types (e.g. `Text` instead of
+  `TS.Text`) after the qualified import. In case you later remove the qualified
+  import, you won't have to revert the type names.
 
 Since this package uses `classy-prelude` (and thus `mono-traversable`) to cover
 significant shared portions of functionality with type classes, you may find it
@@ -69,7 +71,7 @@ module MyModule where
 
 import Antemodulum
 
-default (TextS)
+default (Text)
 ```
 
 # Organization

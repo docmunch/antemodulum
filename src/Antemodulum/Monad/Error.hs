@@ -16,7 +16,7 @@ module Antemodulum.Monad.Error (
 import Antemodulum.Arrow
 import Antemodulum.ClassyPrelude
 import Antemodulum.Monad
-import Antemodulum.Text.Strict (TextS)
+import Antemodulum.Text.Strict (Text)
 
 --------------------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ failOnError m = runErrorT m >>= either (fail . show) return
 
 --------------------------------------------------------------------------------
 
-instance Error TextS where
+instance Error Text where
   strMsg = pack
 
-type TErrorT m = ErrorT TextS m
+type TErrorT m = ErrorT Text m

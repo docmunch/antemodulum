@@ -17,7 +17,7 @@ module Antemodulum.FilePath (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude
-import Antemodulum.Text.Strict (TextS)
+import Antemodulum.Text.Strict (Text)
 
 import Filesystem.Path.CurrentOS as Export hiding (concat, empty, null, stripPrefix, (</>), (<.>))
 import qualified Filesystem.Path as Import
@@ -49,7 +49,7 @@ instance HasFilePath FilePath where
   toFilePath = id
 instance HasFilePath String where
   toFilePath = fromString
-instance HasFilePath TextS where
+instance HasFilePath Text where
   toFilePath = fromText
 
 --------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ instance IsFilePath FilePath where
   fromFilePath = id
 instance IsFilePath String where
   fromFilePath = encodeString
-instance IsFilePath TextS where
+instance IsFilePath Text where
   fromFilePath = either id id . toText
 
 --------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ instance IsFilePath TextS where
 x </> y = toFilePath x Import.</> toFilePath y
 
 -- | Version of 'Filesystem.Path.<.>' using 'HasFilePath'.
-(<.>) :: HasFilePath fp => fp -> TextS -> FilePath
+(<.>) :: HasFilePath fp => fp -> Text -> FilePath
 x <.> y = toFilePath x Import.<.> y
 
 --------------------------------------------------------------------------------

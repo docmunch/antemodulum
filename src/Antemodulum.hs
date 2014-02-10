@@ -23,11 +23,11 @@ import Antemodulum.Time as Export
 
 -- These modules are guaranteed to conflict with 'Antemodulum'. If you need to
 -- use functions from one of these modules, import the module qualified but use
--- the type synonym exported here.
+-- the type (synonym) exported here.
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
-import Antemodulum.ByteString.Strict as Export (ByteStringS)
+import Antemodulum.ByteString.Strict as Export (ByteString)
 import Antemodulum.Text.Lazy as Export (TextL)
-import Antemodulum.Text.Strict as Export (TextS)
+import Antemodulum.Text.Strict as Export (Text)
 
 -- These modules conflict with each other. If you need to import one of them in
 -- a module, you will be fine. If you need both, import at least one module
