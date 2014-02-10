@@ -4,7 +4,7 @@ module Antemodulum.Monad (
 
 --------------------------------------------------------------------------------
 
-import Control.Monad as Export ((<=<), liftM2, MonadPlus(..), guard, msum, mfilter)
+import Control.Monad as Export ((<=<), liftM2, liftM3, liftM4, liftM5, MonadPlus(..), guard, msum, mfilter)
 import Control.Monad.Base as Export
 import Control.Monad.Cont as Export (ContT(..), mapContT, withContT, Cont, cont, runCont, mapCont, withCont)
 import Control.Monad.Cont.Class as Export
