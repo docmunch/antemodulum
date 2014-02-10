@@ -21,7 +21,7 @@ module Antemodulum.FilePath (
 import Antemodulum.ClassyPrelude
 
 import Filesystem as Export hiding (readFile, writeFile)
-import Filesystem.Path.CurrentOS as Export hiding (concat, empty, fromText, null, stripPrefix, (</>), (<.>))
+import Filesystem.Path.CurrentOS as Export hiding (concat, decode, empty, encode, fromText, null, stripPrefix, (</>), (<.>))
 
 import qualified Filesystem.Path.CurrentOS as Import
 
