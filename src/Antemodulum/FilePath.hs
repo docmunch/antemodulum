@@ -45,7 +45,7 @@ module Antemodulum.FilePath (
 import Antemodulum.ClassyPrelude
 import Antemodulum.Monad.IO
 
-import Filesystem as Export (IOMode)
+import Filesystem as Export (IOMode(..))
 import Filesystem.Path.CurrentOS as Export hiding (concat, decode, empty, encode, fromText, null, stripPrefix, (</>), (<.>))
 
 import qualified Filesystem as Import
