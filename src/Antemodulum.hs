@@ -20,6 +20,7 @@ import Antemodulum.Monad.Error as Export
 import Antemodulum.Monad.IO as Export
 import Antemodulum.Numeric as Export
 import Antemodulum.System as Export
+import Antemodulum.Text as Export
 import Antemodulum.Time as Export
 
 -- These modules are guaranteed to conflict with 'Antemodulum'. If you need to

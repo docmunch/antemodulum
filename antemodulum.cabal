@@ -50,6 +50,7 @@ library
                         Antemodulum.FilePath
                         Antemodulum.Functor
                         Antemodulum.List.NonEmpty
+                        Antemodulum.Text
                         Antemodulum.Text.Lazy
                         Antemodulum.Text.Strict
                         Antemodulum.Maybe
