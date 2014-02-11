@@ -63,6 +63,7 @@ library
                         Antemodulum.Monad.Lazy
                         Antemodulum.Monad.Strict
                         Antemodulum.Numeric
+                        Antemodulum.Read
                         Antemodulum.System
                         Antemodulum.Time
 
