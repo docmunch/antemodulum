@@ -61,8 +61,8 @@ reportOnError report m = runErrorT m >>= \case
   Right res -> return res
 
 -- | Run an 'ErrorT' and 'fail' on error.
-failOnError :: Monad m => TErrorT m a -> m a
-failOnError m = runErrorT m >>= either (fail . unpack) return
+failOnError :: (Monad m, Show e) => ErrorT e m a -> m a
+failOnError m = runErrorT m >>= either (fail . show) return
 
 -- | Run an 'ErrorT' and return the error.
 returnError :: (MonadIO m, MonadBaseControl IO m, Exception e) => ErrorT e m a -> m e
