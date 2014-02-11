@@ -43,6 +43,7 @@ library
                         Antemodulum
                         Antemodulum.Applicative
                         Antemodulum.Arrow
+                        Antemodulum.ByteString.Char8
                         Antemodulum.ByteString.Lazy
                         Antemodulum.ByteString.Strict
                         Antemodulum.Char

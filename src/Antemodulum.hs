@@ -26,6 +26,7 @@ import Antemodulum.Time as Export
 -- These modules are guaranteed to conflict with 'Antemodulum'. If you need to
 -- use functions from one of these modules, import the module qualified but use
 -- the type (synonym) exported here.
+import Antemodulum.ByteString.Char8 as Export (ByteStringC)
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
 import Antemodulum.List.NonEmpty as Export (NonEmpty(..))
 import Antemodulum.Text.Lazy as Export (TextL)
