@@ -5,3 +5,4 @@ module Antemodulum.Time (
 --------------------------------------------------------------------------------
 
 import Data.Time as Export
+import Data.Time.Clock.POSIX as Export
