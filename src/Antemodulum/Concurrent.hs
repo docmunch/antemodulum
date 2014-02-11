@@ -1,4 +1,5 @@
 module Antemodulum.Concurrent (
+  forkThrow,
   mapConcurrentlyN,
   mapConcurrentlyC,
   module Export
@@ -9,10 +10,16 @@ module Antemodulum.Concurrent (
 import Antemodulum.ClassyPrelude
 import Antemodulum.Monad
 
-import Control.Concurrent as Export (ThreadId, myThreadId, forkIO, forkFinally, forkIOWithUnmask, killThread, throwTo, forkOn, forkOnWithUnmask, getNumCapabilities, setNumCapabilities, threadCapability, threadDelay)
+import Control.Concurrent.Lifted as Export
 import Control.Concurrent.Async.Lifted as Export
 
 --------------------------------------------------------------------------------
+
+-- | Like 'fork' but always throws an exception back to the main thread.
+forkThrow :: MonadBaseControl IO m => m () -> m ThreadId
+forkThrow m = do
+  tid <- myThreadId
+  fork $ m `catchAny` (\e -> throwTo tid e >> throwIO e)
 
 -- | 'mapConcurrentlyN' with the number of workers determined by 'getNumCapabilities'.
 mapConcurrentlyC :: (MonadIO m, MonadBaseControl IO m) => (a -> m b) -> [a] -> m [b]

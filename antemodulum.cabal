@@ -79,6 +79,7 @@ library
                         deepseq,
                         directory,
                         lifted-async,
+                        lifted-base,
                         monad-control,
                         monad-logger,
                         mtl,
