@@ -1,4 +1,8 @@
 module Antemodulum.Numeric (
+  toFloat,
+  toDouble,
+  mean,
+  meanOf,
   bounded,
   boundedInt,
 ) where
@@ -6,8 +10,32 @@ module Antemodulum.Numeric (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude
+import Antemodulum.Strict (Pair(..))
+import qualified Data.Foldable as Foldable
 
 --------------------------------------------------------------------------------
+
+-- | A specialized version of 'fromIntegral'.
+toFloat :: Integral a => a -> Float
+toFloat = fromIntegral
+
+-- | A specialized version of 'fromIntegral'.
+toDouble :: Integral a => a -> Double
+toDouble = fromIntegral
+
+type Int2 = Pair Int Int
+
+-- | Mean of the elements in a container.
+mean :: Foldable f => f Int -> Float
+mean xs = toFloat added / toFloat len
+  where
+    len :!: added = Foldable.foldl' k (0 :!: 0) xs
+    k :: Int2 -> Int -> Int2
+    k (n :!: s) x = succ n :!: s + x
+
+-- | Mean fraction of the elements satisfying a condition.
+meanOf :: (Functor f, Foldable f) => (a -> Bool) -> f a -> Float
+meanOf cond = mean . fmap (\x -> if cond x then 1 else 0)
 
 -- | Convert an 'a' to a 'b' if the resulting value is within the bounds of the
 -- 'b' range (assuming the range of 'a' is larger).

@@ -65,6 +65,7 @@ library
                         Antemodulum.Numeric
                         Antemodulum.Read
                         Antemodulum.Safe
+                        Antemodulum.Strict
                         Antemodulum.System
                         Antemodulum.Time
 
@@ -86,6 +87,7 @@ library
                         safe,
                         semigroups,
                         setenv,
+                        strict,
                         system-fileio,
                         system-filepath,
                         text,
