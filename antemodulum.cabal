@@ -1,5 +1,5 @@
 name:                   antemodulum
-version:                0.2
+version:                0.3
 synopsis:               Yet another prelude
 category:               Prelude
 description:            This is one (very biased) attempt to make a prelude
@@ -69,6 +69,11 @@ library
                         Antemodulum.System
                         Antemodulum.Time
 
+  -- We add package dependency constraints conservatively. This helps avoid
+  -- introducing new conflicts when all of these packages have their own. Since
+  -- we are, for the most, only re-exporting modules from these packages, we do
+  -- not expect many problems. If problems do arise, we will add constraints as
+  -- necessary.
   build-depends:
                         base,
                         bytestring,
