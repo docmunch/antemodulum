@@ -12,8 +12,8 @@ module Antemodulum.List.NonEmpty (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude hiding (singleton)
+import Antemodulum.DeepSeq
 import Data.List.NonEmpty as Export
-import Control.DeepSeq
 
 --------------------------------------------------------------------------------
 
