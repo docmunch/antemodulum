@@ -70,6 +70,7 @@ library
                         -- The Default class was split off in 0.5.2. Depending
                         -- on an older version can cause problems.
                         data-default >= 0.5.2,
+                        deepseq,
                         directory,
                         lifted-async,
                         monad-control,
