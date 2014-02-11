@@ -27,10 +27,12 @@ library
   default-language:     Haskell2010
 
   default-extensions:
+                        LambdaCase,
                         FlexibleContexts,
                         FlexibleInstances,
                         NoImplicitPrelude,
                         OverloadedStrings,
+                        ScopedTypeVariables,
                         TypeSynonymInstances
 
   ghc-options:          -Wall -fwarn-missing-local-sigs

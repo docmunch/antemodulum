@@ -7,8 +7,10 @@ module Antemodulum.Monad.Error (
   throwWhen,
   mapError,
   TErrorT,
-  prefixError,
+  reportOnError,
   failOnError,
+  returnError,
+  prefixError,
   module Export
 ) where
 
@@ -16,6 +18,7 @@ module Antemodulum.Monad.Error (
 
 import Antemodulum.Arrow
 import Antemodulum.ClassyPrelude
+import Antemodulum.Monad
 
 import Control.Monad.Error as Export (ErrorT(..), mapErrorT)
 import Control.Monad.Error.Class as Export
@@ -51,9 +54,24 @@ instance Error Text where
 
 type TErrorT m = ErrorT Text m
 
+-- | Run an 'ErrorT' and use the reporting function argument on error.
+reportOnError :: (MonadIO m, Exception e) => (e -> IO b) -> ErrorT e m a -> m a
+reportOnError report m = runErrorT m >>= \case
+  Left  err -> liftIO (report err >> throwIO err)
+  Right res -> return res
+
 -- | Run an 'ErrorT' and 'fail' on error.
 failOnError :: Monad m => TErrorT m a -> m a
 failOnError m = runErrorT m >>= either (fail . unpack) return
+
+-- | Run an 'ErrorT' and return the error.
+returnError :: (MonadIO m, MonadBaseControl IO m, Exception e) => ErrorT e m a -> m e
+returnError m = do
+  ref <- newIORef Nothing
+  catch (reportOnError (writeIORef ref . Just) m >> fail "Antemodulum.Monad.Error.returnError") $ \(_ :: SomeException) ->
+    readIORef ref >>= \case
+      Nothing  -> fail "Antemodulum.Monad.Error.returnError: Expected Just, got Nothing."
+      Just err -> return err
 
 -- | Insert a prefix on the error type of an 'ErrorT'.
 prefixError :: (Monad m, Show e) => Text -> ErrorT e m a -> TErrorT m a
