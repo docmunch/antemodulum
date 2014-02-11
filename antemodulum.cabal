@@ -64,6 +64,7 @@ library
                         Antemodulum.Monad.Strict
                         Antemodulum.Numeric
                         Antemodulum.Read
+                        Antemodulum.Safe
                         Antemodulum.System
                         Antemodulum.Time
 
@@ -82,6 +83,7 @@ library
                         mtl,
                         process,
                         resourcet,
+                        safe,
                         semigroups,
                         setenv,
                         system-fileio,
