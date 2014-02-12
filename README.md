@@ -75,12 +75,7 @@ default (Text)
 
 # Organization
 
-This package uses the "trick" of multiple imports under a shared name to
-simplify export declarations and ensure the names from each of the dependencies
-do not conflict.
-
-See [`Antemodulum`](./src/Antemodulum.hs) for details on the module
-organization.
+## Module Hierarchy
 
 The modules in this package are hierarchical only for categorizing the domain of
 the included exports and code. A submodule is not exported from its parent
@@ -88,6 +83,59 @@ module. One benefit of this is that the modules can themselves be used
 independently in the other modules of this package. A common example of this is
 importing one or more of the `Text` modules into other modules that define
 `Text`-related functionality.
+
+## Types of Modules
+
+In this package, there are currently three types of modules that differ on how
+they should be imported into user code.
+
+### No-Conflict Modules
+
+No-conflict modules are exported directly from `Antemodulum`. This means that
+all names exported from these modules are immediately available to the user by
+importing `Antemodulum` and that -- if the package builds successfully -- there
+will be no conflicting names among these modules. The vast majority of modules
+in this package are no-conflict modules.
+
+See [`Antemodulum`](./src/Antemodulum.hs) for the no-conflict modules, which are
+exported without any export list.
+
+### Partial-Conflict Modules
+
+There are some modules that are not exported from `Antemodulum` but may conflict
+with each other. A user can probably safely import one of these with
+qualification, though importing more than one will definitely cause problems.
+
+These are the partial-conflict modules:
+
+* `Antemodulum.Monad.Lazy`
+* `Antemodulum.Monad.Strict`
+
+### Qualified Modules
+
+The last type of module is one that will probably cause problems in the imported
+namespace. For that reason, a user should either import them qualified or with
+an import list.
+
+To reduce the number of these modules, we use packages like `classy-prelude`
+which include a useful type classes that cover much of the functionality of
+these modules. We also add our type classes when it is useful. See
+[`Antemodulum.Text`](./src/Antemodulum/Text.hs) for an example. If there are
+more functions that can be supported in a similar manner, please report them.
+
+To avoid having to qualify the types, we do export them or type synonyms from
+`Antemodulum`. Ideally, a user only needs to qualify the functions.
+
+The qualified modules (with their unqualified types/type synonyms and/or
+constructors) are:
+
+* `Antemodulum.ByteString.Strict` (`ByteString`)
+* `Antemodulum.ByteString.Lazy` (`ByteStringL`)
+* `Antemodulum.ByteString.Char8` (`ByteStringC`)
+* `Antemodulum.Text.Strict` (`Text`)
+* `Antemodulum.Text.Lazy` (`TextL`)
+* `Antemodulum.List.NonEmpty` (`NonEmpty((:|))`)
+* `Antemodulum.Strict` (`EitherS`, `MaybeS`, `Pair`)
 
 ## Extension
 

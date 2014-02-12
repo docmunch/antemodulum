@@ -26,30 +26,11 @@ import Antemodulum.System as Export
 import Antemodulum.Text as Export
 import Antemodulum.Time as Export
 
--- These modules will probably conflict with 'Antemodulum' and should be
--- imported qualified.
---import Antemodulum.Strict
-
 -- These modules are guaranteed to conflict with 'Antemodulum'. If you need to
 -- use functions from one of these modules, import the module qualified but use
 -- the type (synonym) exported here.
 import Antemodulum.ByteString.Char8 as Export (ByteStringC)
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
 import Antemodulum.List.NonEmpty as Export (NonEmpty(..))
+import Antemodulum.Strict as Export (EitherS, MaybeS, Pair)
 import Antemodulum.Text.Lazy as Export (TextL)
-
--- These types are exported by 'Antemodulum.ClassyPrelude', but the functions
--- will still conflict with 'Antemodulum'. If there are common functions that we
--- can export (e.g. via a type class) that will not conflict, please report
--- them, and we will see what we can do.
---import Antemodulum.ByteString.Strict as Export (ByteString)
---import Antemodulum.Text.Strict as Export (Text)
-
--- These modules conflict with each other. If you need to import one of them in
--- a module, you will be fine. If you need both, import at least one module
--- qualified.
---
--- When modifying one of the following modules, uncomment it here to verify that
--- it does not conflict with 'Antemodulum'.
---import Antemodulum.Monad.Lazy as Export
---import Antemodulum.Monad.Strict as Export
