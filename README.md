@@ -1,7 +1,6 @@
 # Introduction
 
-This is one (very biased) attempt to make a prelude module with the following
-goals:
+A prelude module with the following goals:
 
 1. significant reduction in the number of immediate package dependencies and
    imported modules and names for general-purpose application code,
@@ -13,8 +12,7 @@ than worrying about where to import something from. The third goal allows
 application programmers to push useful, general-purpose functionality into the
 package as needed.
 
-There is naturally a balance to be found with this package between the two
-conflicting goals:
+There is a balance to be found between:
 
 1. general-purpose re-exports that are useful in a variety of application
    domains and
@@ -41,6 +39,7 @@ For example, suppose you want to use `Data.Text` functionality (see the next
 section). If you import `Data.Text` directly, you will need to add `text` to
 your `.cabal`. Instead, import `Antemodulum.Text.Strict` which simply re-exports
 `Data.Text`.
+
 
 ## Strings
 
