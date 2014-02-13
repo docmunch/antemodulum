@@ -66,6 +66,7 @@ library
                         Antemodulum.Read
                         Antemodulum.Safe
                         Antemodulum.Strict
+                        Antemodulum.Strict.Pair
                         Antemodulum.System
                         Antemodulum.Time
 
