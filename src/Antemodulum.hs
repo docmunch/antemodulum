@@ -22,6 +22,7 @@ import Antemodulum.Monad.IO as Export
 import Antemodulum.Numeric as Export
 import Antemodulum.Read as Export
 import Antemodulum.Safe as Export
+import Antemodulum.Strict.Pair as Export
 import Antemodulum.System as Export
 import Antemodulum.Text as Export
 import Antemodulum.Time as Export
@@ -32,5 +33,5 @@ import Antemodulum.Time as Export
 import Antemodulum.ByteString.Char8 as Export (ByteStringC)
 import Antemodulum.ByteString.Lazy as Export (ByteStringL)
 import Antemodulum.List.NonEmpty as Export (NonEmpty(..))
-import Antemodulum.Strict as Export (EitherS, MaybeS, Pair)
+import Antemodulum.Strict as Export (EitherS, MaybeS)
 import Antemodulum.Text.Lazy as Export (TextL)

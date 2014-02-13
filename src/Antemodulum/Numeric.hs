@@ -10,7 +10,7 @@ module Antemodulum.Numeric (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude
-import Antemodulum.Strict (Pair(..))
+import Antemodulum.Strict.Pair
 import qualified Data.Foldable as Foldable
 
 --------------------------------------------------------------------------------

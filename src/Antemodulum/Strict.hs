@@ -6,7 +6,8 @@ module Antemodulum.Strict (
 
 --------------------------------------------------------------------------------
 
-import Data.Strict as Export
+import Data.Strict.Either as Export
+import Data.Strict.Maybe as Export
 
 --------------------------------------------------------------------------------
 

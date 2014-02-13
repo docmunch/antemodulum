@@ -135,7 +135,7 @@ constructors) are:
 * `Antemodulum.Text.Strict` (`Text`)
 * `Antemodulum.Text.Lazy` (`TextL`)
 * `Antemodulum.List.NonEmpty` (`NonEmpty((:|))`)
-* `Antemodulum.Strict` (`EitherS`, `MaybeS`, `Pair`)
+* `Antemodulum.Strict` (`EitherS`, `MaybeS`)
 
 ## Extension
 
