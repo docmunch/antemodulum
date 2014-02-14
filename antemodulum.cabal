@@ -76,7 +76,7 @@ library
   -- not expect many problems. If problems do arise, we will add constraints as
   -- necessary.
   build-depends:
-                        base,
+                        base < 10,
                         bytestring,
                         classy-prelude >= 0.7,
                         -- The Default class was split off in 0.5.2. Depending
