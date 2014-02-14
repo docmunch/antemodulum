@@ -49,6 +49,7 @@ library
                         Antemodulum.Char
                         Antemodulum.ClassyPrelude
                         Antemodulum.Concurrent
+                        Antemodulum.DeepSeq
                         Antemodulum.Default
                         Antemodulum.FilePath
                         Antemodulum.Functor
