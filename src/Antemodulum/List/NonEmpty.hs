@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Antemodulum.List.NonEmpty (
-  groupByTransitive,
+  groupBy1Transitive,
   snocList,
   module Export
 ) where
@@ -17,7 +17,7 @@ import Data.List.NonEmpty as Export
 instance NFData a => NFData (NonEmpty a) where
   rnf (x :| xs) = rnf x `seq` rnf xs
 
--- | Inefficient 'snoc' onto a list.
+-- | _O(n)_ 'snoc' onto a list.
 snocList :: [a] -> a -> NonEmpty a
 snocList xs x = Export.fromList $ xs ++ [x]
 
@@ -26,8 +26,8 @@ snocList xs x = Export.fromList $ xs ++ [x]
 --
 -- See the following on how 'groupBy' expects equality:
 -- http://stackoverflow.com/questions/1316365/haskell-surprising-behavior-of-groupby
-groupByTransitive :: (a -> a -> Bool) -> NonEmpty a -> NonEmpty (NonEmpty a)
-groupByTransitive cmp = go
+groupBy1Transitive :: (a -> a -> Bool) -> NonEmpty a -> NonEmpty (NonEmpty a)
+groupBy1Transitive cmp = go
   where
     go (x:|[]) = (x :| []) :| []
     go (x:|xs@(x2:rest)) =
