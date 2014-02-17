@@ -4,5 +4,5 @@ module Antemodulum.Arrow (
 
 --------------------------------------------------------------------------------
 
-import Control.Arrow as Export
+import Control.Arrow as Export hiding (app)
 import Control.Category as Export
