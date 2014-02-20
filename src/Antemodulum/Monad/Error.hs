@@ -52,7 +52,7 @@ mapError f m = ErrorT $ liftM (left f) $ runErrorT m
 instance Error Text where
   strMsg = pack
 
-type TErrorT m = ErrorT Text m
+type TErrorT = ErrorT Text
 
 -- | Run an 'ErrorT' and use the reporting function argument on error.
 reportOnError :: (MonadIO m, Exception e) => (e -> IO b) -> ErrorT e m a -> m a
