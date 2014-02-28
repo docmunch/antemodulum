@@ -22,15 +22,15 @@ forkThrow m = do
   fork $ m `catchAny` (\e -> throwTo tid e >> throwIO e)
 
 -- | 'mapConcurrentlyN' with the number of workers determined by 'getNumCapabilities'.
-mapConcurrentlyC :: (MonadIO m, MonadBaseControl IO m) => (a -> m b) -> [a] -> m [b]
+mapConcurrentlyC :: (MonoTraversable t, MonadIO m, MonadBaseControl IO m) => (Element t -> m b) -> t -> m [b]
 mapConcurrentlyC f jobs = do
   w <- liftIO getNumCapabilities
   mapConcurrentlyN (max 1 (w - 1)) f jobs
 
 -- | 'mapConcurrently' with a given number of workers.
-mapConcurrentlyN :: MonadBaseControl IO m => Int -> (a -> m b) -> [a] -> m [b]
+mapConcurrentlyN :: (MonoTraversable t, MonadBaseControl IO m) => Int -> (Element t -> m b) -> t -> m [b]
 mapConcurrentlyN n f jobs =
-  concat <$> mapM (mapConcurrently f) (breakL jobs)
+  concat <$> mapM (mapConcurrently f) (breakL $ toList jobs)
   where
     breakL :: [a] -> [[a]]
     breakL [] = []
