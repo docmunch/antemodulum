@@ -5,7 +5,8 @@ module Antemodulum.Safe (
 --------------------------------------------------------------------------------
 
 import Safe as Export
-  (headDef,                    headNote,
+  (atDef,         atMay,       atNote,
+   headDef,                    headNote,
                   initMay,     initNote,
    lastDef,                    lastNote,
    minimumDef,                 minimumNote,
