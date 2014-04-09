@@ -83,8 +83,8 @@ library
                         -- For these packages, use the version with the most
                         -- refined type classes that do not conflict. Upgrade as
                         -- necessary.
-                        classy-prelude == 0.8.*,
-                        mono-traversable == 0.3.*,
+                        classy-prelude >= 0.8.3.1,
+                        mono-traversable >= 0.3.0,
 
                         -- The Default class was split off in 0.5.2. Depending
                         -- on an older version can cause dependency problems.
