@@ -80,11 +80,11 @@ library
                         -- Use an upper limit to please 'cabal check'.
                         base < 10,
 
-                        -- For these packages, use the version with the most
-                        -- refined type classes that do not conflict. Upgrade as
-                        -- necessary.
-                        classy-prelude == 0.8.*,
-                        mono-traversable == 0.3.*,
+                        -- For these packages, use the latest version with the
+                        -- most refined type classes that do not conflict.
+                        -- Upgrade as necessary.
+                        classy-prelude == 0.9.*,
+                        mono-traversable == 0.5.*,
 
                         -- The Default class was split off in 0.5.2. Depending
                         -- on an older version can cause dependency problems.
