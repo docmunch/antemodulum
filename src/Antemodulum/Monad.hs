@@ -14,4 +14,4 @@ import Control.Monad.RWS.Class as Export
 import Control.Monad.Reader as Export (ReaderT(..), mapReaderT, withReaderT, Reader, runReader, mapReader, withReader)
 import Control.Monad.Trans.Class as Export
 import Control.Monad.Trans.Control as Export
-import Control.Monad.Trans.Resource as Export
+import Control.Monad.Trans.Resource as Export hiding (MonadThrow(..))
