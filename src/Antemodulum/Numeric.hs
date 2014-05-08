@@ -23,18 +23,16 @@ toFloat = fromIntegral
 toDouble :: Integral a => a -> Double
 toDouble = fromIntegral
 
-type Int2 = Pair Int Int
-
 -- | Mean of the elements in a container.
-mean :: Foldable f => f Int -> Float
-mean xs = toFloat added / toFloat len
+mean :: (Fractional a, Foldable f) => f a -> a
+mean xs = added / fromIntegral len
   where
     len :!: added = Foldable.foldl' k (0 :!: 0) xs
-    k :: Int2 -> Int -> Int2
+    k :: Num b => Pair Int b -> b -> Pair Int b
     k (n :!: s) x = succ n :!: s + x
 
 -- | Mean fraction of the elements satisfying a condition.
-meanOf :: (Functor f, Foldable f) => (a -> Bool) -> f a -> Float
+meanOf :: (Fractional b, Functor f, Foldable f) => (a -> Bool) -> f a -> b
 meanOf cond = mean . fmap (\x -> if cond x then 1 else 0)
 
 -- | Convert an 'a' to a 'b' if the resulting value is within the bounds of the
