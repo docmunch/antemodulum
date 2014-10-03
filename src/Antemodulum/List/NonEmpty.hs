@@ -9,7 +9,6 @@ module Antemodulum.List.NonEmpty (
 --------------------------------------------------------------------------------
 
 import Antemodulum.ClassyPrelude
-import Antemodulum.DeepSeq
 import Data.List.NonEmpty as Export
 
 --------------------------------------------------------------------------------
