@@ -4,4 +4,4 @@ module Antemodulum.Maybe (
 
 --------------------------------------------------------------------------------
 
-import Data.Maybe as Export
+import Data.Maybe as Export hiding (catMaybes)
