@@ -14,9 +14,6 @@ import Data.List.NonEmpty as Export
 
 --------------------------------------------------------------------------------
 
-instance NFData a => NFData (NonEmpty a) where
-  rnf (x :| xs) = rnf x `seq` rnf xs
-
 -- | _O(n)_ 'snoc' onto a list.
 snocList :: [a] -> a -> NonEmpty a
 snocList xs x = Export.fromList $ xs ++ [x]
