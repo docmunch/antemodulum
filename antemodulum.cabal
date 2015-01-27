@@ -84,7 +84,7 @@ library
                         -- most refined type classes that do not conflict.
                         -- Upgrade as necessary.
                         classy-prelude == 0.9.*,
-                        mono-traversable >= 0.6.2 && < 0.7,
+                        mono-traversable >= 0.6.2 && < 0.8,
 
                         -- The Default class was split off in 0.5.2. Depending
                         -- on an older version can cause dependency problems.
